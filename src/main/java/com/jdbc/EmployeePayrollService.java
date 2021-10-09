@@ -10,8 +10,16 @@ public class EmployeePayrollService {
     EmployeePayrollJdbc employeePayrollJdbc;
 
     public int getQuery(String query) throws SQLException {
-        ResultSet querries = getQuerries(query);
-        return printSet(querries);
+        ResultSet queries = getQuerries(query);
+        return printSet(queries);
+    }
+
+    public int updateData(String name, double value) throws SQLException {
+        employeePayrollJdbc = new EmployeePayrollJdbc();
+        Connection connection = employeePayrollJdbc.dbConnect();
+        Statement statement = connection.createStatement();
+        String query = String.format("UPDATE employee_payroll SET salary = %.2f WHERE name = '%s';", value, name);
+        return statement.executeUpdate(query);
     }
 
     public ResultSet getQuerries(String query) throws SQLException {
@@ -34,5 +42,4 @@ public class EmployeePayrollService {
         }
         return i;
     }
-
 }
