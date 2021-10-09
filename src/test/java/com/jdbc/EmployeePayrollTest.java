@@ -22,4 +22,11 @@ public class EmployeePayrollTest {
         int result = employeePayrollService.updateData("Terisa",5000000.00);
         Assertions.assertEquals(1,result);
     }
+
+    @Test
+    public void ifData_UpdatePerformUsingPrepared_ShouldReturnTrue() throws SQLException{
+        employeePayrollService = new EmployeePayrollService();
+        int res = employeePayrollService.updatePreparedData("Terisa",3000000.00);
+        Assertions.assertEquals(1,res);
+    }
 }

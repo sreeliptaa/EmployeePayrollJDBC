@@ -7,6 +7,16 @@ import java.util.Enumeration;
 
 
 public class EmployeePayrollJdbc {
+    private static EmployeePayrollJdbc employeePayrollJdbc;
+
+    private EmployeePayrollJdbc() {
+    }
+
+    public static EmployeePayrollJdbc getInstance() {
+        if (employeePayrollJdbc == null)
+            employeePayrollJdbc = new EmployeePayrollJdbc();
+        return employeePayrollJdbc;
+    }
 
     Connection connection;
 
@@ -32,5 +42,6 @@ public class EmployeePayrollJdbc {
         }
         return connection;
     }
+
 
 }
